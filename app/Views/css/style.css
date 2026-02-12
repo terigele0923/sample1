@@ -1,0 +1,84 @@
+.page-center {
+    width: 80%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin: 0 auto;
+}
+
+.page-header {
+    margin-top: 20px;
+    box-sizing: border-box;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+    color: white;
+    padding: 10px 16px;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.index-wrap {
+    width: 100%;
+    padding: 10px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+table.index {
+    border-collapse: collapse;
+    border: 1px solid black;
+    width: 100%;
+    margin-top: 20px;
+}
+
+table th,
+table td {
+    border: 1px solid black;
+    padding: 8px 12px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+table th {
+    background-color: #fdcb5e;
+}
+
+table td form {
+    margin: 0;
+}
+
+.create-btn,
+.logout-btn,
+.edit-btn,
+.delete-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    color: white;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.create-btn,
+.logout-btn {
+    background-color: green;
+}
+
+.edit-btn {
+    background-color: blue;
+}
+
+.delete-btn {
+    background-color: red;
+}
