@@ -23,9 +23,9 @@ class Router
                 ? ($_POST['token'] ?? '')
                 : ($_GET['token'] ?? '');
 
-            if (!Auth::verifyToken($token)) {
-                http_response_code(403);
-                echo 'Invalid token';
+            if ($token === '' || !Auth::verifyToken($token)) {
+                Auth::logout();
+                header("Location:?controller=Auth&action=login");
                 exit;
             }
         }
@@ -38,4 +38,3 @@ class Router
         $controller->$action();
     }
 }
-?>
