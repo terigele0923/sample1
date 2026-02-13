@@ -1,8 +1,9 @@
 :root {
-    --header-height: 56px;
+    --header-height: 82px;
     --nav-width: 220px;
     --bg: #f6f7fb;
-    --panel: #ffffff;
+    --header-bg: #e4e9e6;
+    --panel: #d3f6ff;
     --text: #2f343a;
     --muted: #6b7280;
     --border: #e2e8f0;
@@ -113,7 +114,7 @@ a:hover {
     height: var(--header-height);
     display: flex;
     align-items: center;
-    background: var(--panel);
+    background: var(--header-bg);
     color: var(--text);
     border-bottom: 1px solid var(--border);
     box-shadow: var(--shadow);
