@@ -3,18 +3,19 @@ $title = 'Employee List';
 $bodyClass = 'page-center';
 require __DIR__ . '/../partials/head.php';
 ?>
-<header class="page-header">
-    <h1>社員一覧</h1>
-    <a class="logout-btn" href="?controller=Auth&action=logout&token=<?= urlencode(Auth::token()) ?>">Logout</a>
-</header>
 
 <main class="index-wrap">
-    <a class="create-btn" href="?controller=Employee&action=create&token=<?= urlencode(Auth::token()) ?>">新規登録</a>
+    <div class="action-links">
+        <a class="create-btn" href="?controller=Employee&action=create&token=<?= urlencode(Auth::token()) ?>">新規登録</a>
+        <a class="create-btn" href="?controller=Employee&action=infoCreate&token=<?= urlencode(Auth::token()) ?>">従業員情報登録</a>
+        <a class="create-btn" href="?controller=Employee&action=skillsCreate&token=<?= urlencode(Auth::token()) ?>">従業員スキル登録</a>
+    </div>
+
     <table class="index">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>名前</th>
+                <th>ユーザー名</th>
                 <th>パスワード</th>
                 <th>Email</th>
                 <th colspan="2">操作</th>
@@ -24,7 +25,7 @@ require __DIR__ . '/../partials/head.php';
             <?php foreach ($employees as $e): ?>
                 <tr>
                     <td><?= $e['id'] ?></td>
-                    <td><?= htmlspecialchars($e['name']) ?></td>
+                    <td><?= htmlspecialchars($e['user_name']) ?></td>
                     <td><?= htmlspecialchars($e['password']) ?></td>
                     <td><?= htmlspecialchars($e['email']) ?></td>
                     <td>

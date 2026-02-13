@@ -20,7 +20,7 @@ class Auth
         self::start();
         session_regenerate_id(true);
         $_SESSION['user_id'] = $user['id'];
-        $_SESSION['user_name'] = $user['name'];
+        $_SESSION['user_name'] = $user['user_name'] ?? ($user['name'] ?? '');
         // Random token per login (used to bind requests to the session)
         $_SESSION['login_token'] = bin2hex(random_bytes(16));
     }

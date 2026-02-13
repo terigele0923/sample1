@@ -11,11 +11,11 @@ class AuthController
 
     public function authenticate()
     {
-        $name = $_POST['name'] ?? '';
+        $name = $_POST['user_name'] ?? '';
         $password = $_POST['password'] ?? '';
 
         $m = new Employee();
-        $user = $m->findByName($name);
+        $user = $m->findByUserName($name);
 
         if ($user && hash_equals((string)$user['password'], (string)$password)) {
             Auth::login($user);
