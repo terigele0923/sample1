@@ -27,5 +27,6 @@ $employeeIdParam = $selectedEmployeeId !== '' ? '&employee_id=' . urlencode((str
 
 <p>
     <a class="create-btn" href="?controller=Employee&action=skillsCreate<?= $employeeIdParam ?>&token=<?= urlencode(Auth::token()) ?>">従業員スキル登録へ</a>
+    <a class="create-btn" href="?controller=Employee&action=index&token=<?= urlencode(Auth::token()) ?>">一覧へ戻る</a>
 </p>
 <?php require __DIR__ . '/../partials/foot.php'; ?>

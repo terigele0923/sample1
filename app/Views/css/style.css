@@ -93,6 +93,13 @@ a:hover {
     background-color: #6b7280;
 }
 
+.user-info h1 {
+    font-size: 18px;
+    font-weight: 450;
+    color: #ffffff;
+    margin: 0 0 4px 0;
+}
+
 .nav-btn {
     width: 100%;
     background-color: var(--primary);

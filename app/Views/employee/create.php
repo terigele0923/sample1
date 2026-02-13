@@ -2,9 +2,10 @@
 $title = 'Create Employee';
 require __DIR__ . '/../partials/head.php';
 ?>
-<h1>新規登録</h1>
+
 
 <form class="form-card" method="POST" action="?controller=Employee&action=store">
+    <h1>新規登録</h1>
     <input type="hidden" name="token" value="<?= htmlspecialchars(Auth::token()) ?>">
 
     <label class="form-row">
@@ -24,7 +25,7 @@ require __DIR__ . '/../partials/head.php';
 
     <div class="form-actions">
         <button class="create-btn" type="submit">登録</button>
-        <button class="ghost-btn" type="button" onclick="location.href='?controller=Employee&action=index&token=<?= urlencode(Auth::token()) ?>'">キャンセル</button>
+        <button class="create-btn" type="button" onclick="location.href='?controller=Employee&action=index&token=<?= urlencode(Auth::token()) ?>'">キャンセル</button>
     </div>
 </form>
 <?php require __DIR__ . '/../partials/foot.php'; ?>

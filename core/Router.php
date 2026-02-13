@@ -10,15 +10,20 @@ class Router
         $controller = $_GET['controller'] ?? 'Employee';
         $action = $_GET['action'] ?? 'index';
 
-        $publicActions = ['login', 'authenticate'];
-        $isAuthController = ($controller === 'Auth');
+        $publicRoutes = [
+            'Auth' => ['login', 'authenticate'],
+            'Employee' => ['create', 'store'],
+        ];
 
-        if (!Auth::check() && !($isAuthController && in_array($action, $publicActions, true))) {
+        $isPublic = isset($publicRoutes[$controller])
+            && in_array($action, $publicRoutes[$controller], true);
+
+        if (!Auth::check() && !$isPublic) {
             header("Location:?controller=Auth&action=login");
             exit;
         }
 
-        if (Auth::check() && !($isAuthController && in_array($action, $publicActions, true))) {
+        if (Auth::check() && !$isPublic) {
             $token = $_SERVER['REQUEST_METHOD'] === 'POST'
                 ? ($_POST['token'] ?? '')
                 : ($_GET['token'] ?? '');

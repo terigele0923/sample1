@@ -7,7 +7,6 @@ require __DIR__ . '/../partials/head.php';
     <form id="employee-select-form" method="POST">
         <input type="hidden" name="token" value="<?= htmlspecialchars(Auth::token()) ?>">
         <div class="action-links">
-            <a class="create-btn" href="?controller=Employee&action=create&token=<?= urlencode(Auth::token()) ?>">新規登録</a>
             <button class="create-btn" type="submit" formaction="?controller=Employee&action=infoCreate">従業員情報登録</button>
             <button class="create-btn" type="submit" formaction="?controller=Employee&action=skillsCreate">従業員スキル登録</button>
             <button class="create-btn" type="submit" formaction="?controller=Employee&action=infoShow">従業員情報表示</button>
