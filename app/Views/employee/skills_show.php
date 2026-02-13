@@ -9,7 +9,6 @@ $employeeIdParam = $selectedEmployeeId !== '' ? '&employee_id=' . urlencode((str
 
 <?php if ($selectedEmployeeId === ''): ?>
     <p>社員一覧で従業員を選択してから表示してください。</p>
-    <p><a class="create-btn" href="?controller=Employee&action=index&token=<?= urlencode(Auth::token()) ?>">社員一覧へ戻る</a></p>
 <?php elseif (empty($employeeSkills)): ?>
     <p>従業員スキルが見つかりません。</p>
 <?php else: ?>

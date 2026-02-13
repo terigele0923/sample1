@@ -52,8 +52,6 @@ $isSimplePage = in_array($pageCssName, ['login', 'create'], true);
         </div>
     <div class="nav-left">
         <a href="?controller=Employee&action=index<?= $token !== '' ? '&token=' . $token : '' ?>">社員一覧</a>
-        <a href="?controller=Employee&action=infoShow<?= $token !== '' ? '&token=' . $token : '' ?>">従業員情報</a>
-        <a href="?controller=Employee&action=skillsShow<?= $token !== '' ? '&token=' . $token : '' ?>">従業員スキル</a>
     </div>
             <div class="login-logout-btn">
                 <?php if ($isLoggedIn): ?>
@@ -72,8 +70,5 @@ $isSimplePage = in_array($pageCssName, ['login', 'create'], true);
         </div>
 </nav>
 <div class="page-center">
-    <header class="page-header">
-        
-    </header>
     <div class="page-body">
 <?php endif; ?>
