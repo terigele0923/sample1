@@ -2,67 +2,68 @@
 $title = 'Employee Skills';
 require __DIR__ . '/../partials/head.php';
 $selectedEmployeeId = $selectedEmployeeId ?? '';
-$selectedEmployeeName = '';
-foreach ($employees as $e) {
-    if ((string)$e['id'] === (string)$selectedEmployeeId) {
-        $selectedEmployeeName = $e['user_name'] ?? '';
-        break;
-    }
-}
+$selectedEmployeeName = $selectedEmployeeName ?? '';
 ?>
 <h1>従業員スキル登録</h1>
 
 <?php if ($selectedEmployeeId === ''): ?>
-<form method="GET" action="">
-    <input type="hidden" name="controller" value="Employee">
-    <input type="hidden" name="action" value="skillsCreate">
-    <input type="hidden" name="token" value="<?= htmlspecialchars(Auth::token()) ?>">
-    <label>
-        従業員ID
-        <select name="employee_id">
-            <?php foreach ($employees as $e): ?>
-                <option value="<?= $e['id'] ?>"><?= $e['id'] ?>: <?= htmlspecialchars($e['user_name']) ?></option>
-            <?php endforeach; ?>
-        </select>
-    </label>
-    <button class="create-btn" type="submit">次へ</button>
-</form>
+<p class="notice">従業員を選択してください。</p>
+<p><a class="ghost-btn" href="?controller=Employee&action=index&token=<?= urlencode(Auth::token()) ?>">社員一覧へ戻る</a></p>
 <?php else: ?>
-<p>対象従業員: <?= htmlspecialchars($selectedEmployeeId) ?> <?= $selectedEmployeeName !== '' ? '(' . htmlspecialchars($selectedEmployeeName) . ')' : '' ?></p>
-<form method="POST" action="?controller=Employee&action=skillsStore">
+<p class="notice">対象従業員: <?= htmlspecialchars($selectedEmployeeId) ?> <?= $selectedEmployeeName !== '' ? '(' . htmlspecialchars($selectedEmployeeName) . ')' : '' ?></p>
+<form class="form-card" method="POST" action="?controller=Employee&action=skillsStore">
     <input type="hidden" name="token" value="<?= htmlspecialchars(Auth::token()) ?>">
     <input type="hidden" name="employee_id" value="<?= htmlspecialchars($selectedEmployeeId) ?>">
 
-    <label>経験年数 <input name="years_experience" type="number" min="0"></label><br>
+    <label class="form-row">
+        <span>経験年数</span>
+        <input name="years_experience" type="number" min="0">
+    </label>
 
-    <div id="skills-box">
-        <label>スキル <input name="skill[]"></label><br>
+    <div class="stack" id="skills-box">
+        <label class="form-row">
+            <span>スキル</span>
+            <input name="skill[]">
+        </label>
     </div>
-    <button type="button" class="create-btn" id="add-skill">追加</button>
-    <br>
-    <div id="certification-box">
-        <label>資格 <input name="certification[]"></label><br>
+    <button type="button" class="sub-btn" id="add-skill">追加</button>
+
+    <div class="stack" id="certification-box">
+        <label class="form-row">
+            <span>資格</span>
+            <input name="certification[]">
+        </label>
     </div>
-    <button type="button" class="create-btn" id="add-certification">追加</button>
+    <button type="button" class="sub-btn" id="add-certification">追加</button>
 
-    <label>業界歴 <input name="industry_history"></label><br>
-    <label>登録日 <input name="registered_at" type="date"></label><br>
+    <label class="form-row">
+        <span>業界歴</span>
+        <input name="industry_history">
+    </label>
 
-    <button class="create-btn" type="submit">登録</button>
+    <label class="form-row">
+        <span>登録日</span>
+        <input name="registered_at" type="date">
+    </label>
+
+    <div class="form-actions">
+        <button class="create-btn" type="submit">登録</button>
+        <a class="ghost-btn" href="?controller=Employee&action=index&token=<?= urlencode(Auth::token()) ?>">戻る</a>
+    </div>
 </form>
 
 <script>
 document.getElementById('add-skill').addEventListener('click', function () {
     var box = document.getElementById('skills-box');
     var wrap = document.createElement('div');
-    wrap.innerHTML = '<label>スキル <input name="skill[]"></label><br>';
+    wrap.innerHTML = '<label class="form-row"><span>スキル</span><input name="skill[]"></label>';
     box.appendChild(wrap);
 });
 
 document.getElementById('add-certification').addEventListener('click', function () {
     var box = document.getElementById('certification-box');
     var wrap = document.createElement('div');
-    wrap.innerHTML = '<label>資格 <input name="certification[]"></label><br>';
+    wrap.innerHTML = '<label class="form-row"><span>資格</span><input name="certification[]"></label>';
     box.appendChild(wrap);
 });
 </script>

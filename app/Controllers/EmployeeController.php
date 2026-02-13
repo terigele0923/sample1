@@ -50,8 +50,16 @@ class EmployeeController
     public function infoCreate()
     {
         $m=new Employee();
-        $employees=$m->all();
-        $selectedEmployeeId = $_GET['employee_id'] ?? '';
+        $employeeId = $_POST['employee_id'] ?? ($_GET['employee_id'] ?? '');
+        if (is_array($employeeId)) {
+            $employeeId = $employeeId[0] ?? '';
+        }
+        $selectedEmployeeId = $employeeId;
+        $selectedEmployeeName = '';
+        if ($selectedEmployeeId !== '') {
+            $employee = $m->findById($selectedEmployeeId);
+            $selectedEmployeeName = $employee['user_name'] ?? '';
+        }
         require '../app/Views/employee/info_create.php';
     }
 
@@ -76,8 +84,16 @@ class EmployeeController
     public function skillsCreate()
     {
         $m=new Employee();
-        $employees=$m->all();
-        $selectedEmployeeId = $_GET['employee_id'] ?? '';
+        $employeeId = $_POST['employee_id'] ?? ($_GET['employee_id'] ?? '');
+        if (is_array($employeeId)) {
+            $employeeId = $employeeId[0] ?? '';
+        }
+        $selectedEmployeeId = $employeeId;
+        $selectedEmployeeName = '';
+        if ($selectedEmployeeId !== '') {
+            $employee = $m->findById($selectedEmployeeId);
+            $selectedEmployeeName = $employee['user_name'] ?? '';
+        }
         require '../app/Views/employee/skills_create.php';
     }
 
@@ -115,20 +131,36 @@ class EmployeeController
     public function infoShow()
     {
         $m=new Employee();
-        $employeeId = $_GET['employee_id'] ?? '';
-        $employees = $m->all();
+        $employeeId = $_POST['employee_id'] ?? ($_GET['employee_id'] ?? '');
+        if (is_array($employeeId)) {
+            $employeeId = $employeeId[0] ?? '';
+        }
         $selectedEmployeeId = $employeeId;
-        $employeeInfo = $selectedEmployeeId !== '' ? $m->getEmployeeInfo($selectedEmployeeId) : null;
+        $selectedEmployeeName = '';
+        $employeeInfo = null;
+        if ($selectedEmployeeId !== '') {
+            $employee = $m->findById($selectedEmployeeId);
+            $selectedEmployeeName = $employee['user_name'] ?? '';
+            $employeeInfo = $m->getEmployeeInfo($selectedEmployeeId);
+        }
         require '../app/Views/employee/info_show.php';
     }
 
     public function skillsShow()
     {
         $m=new Employee();
-        $employeeId = $_GET['employee_id'] ?? '';
-        $employees = $m->all();
+        $employeeId = $_POST['employee_id'] ?? ($_GET['employee_id'] ?? '');
+        if (is_array($employeeId)) {
+            $employeeId = $employeeId[0] ?? '';
+        }
         $selectedEmployeeId = $employeeId;
-        $employeeSkills = $selectedEmployeeId !== '' ? $m->getEmployeeSkills($selectedEmployeeId) : null;
+        $selectedEmployeeName = '';
+        $employeeSkills = null;
+        if ($selectedEmployeeId !== '') {
+            $employee = $m->findById($selectedEmployeeId);
+            $selectedEmployeeName = $employee['user_name'] ?? '';
+            $employeeSkills = $m->getEmployeeSkills($selectedEmployeeId);
+        }
         require '../app/Views/employee/skills_show.php';
     }
 }

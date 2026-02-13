@@ -2,35 +2,14 @@
 $title = 'Employee Skills';
 require __DIR__ . '/../partials/head.php';
 $selectedEmployeeId = $selectedEmployeeId ?? '';
-$selectedEmployeeName = '';
-foreach ($employees as $e) {
-    if ((string)$e['id'] === (string)$selectedEmployeeId) {
-        $selectedEmployeeName = $e['user_name'] ?? '';
-        break;
-    }
-}
+$selectedEmployeeName = $selectedEmployeeName ?? '';
+$employeeIdParam = $selectedEmployeeId !== '' ? '&employee_id=' . urlencode((string)$selectedEmployeeId) : '';
 ?>
 <h1>従業員スキル</h1>
 
 <?php if ($selectedEmployeeId === ''): ?>
-    <?php if (empty($employees)): ?>
-        <p>従業員が登録されていません。</p>
-    <?php else: ?>
-        <form method="GET" action="">
-            <input type="hidden" name="controller" value="Employee">
-            <input type="hidden" name="action" value="skillsShow">
-            <input type="hidden" name="token" value="<?= htmlspecialchars(Auth::token()) ?>">
-            <label>
-                従業員ID
-                <select name="employee_id">
-                    <?php foreach ($employees as $e): ?>
-                        <option value="<?= $e['id'] ?>"><?= $e['id'] ?>: <?= htmlspecialchars($e['user_name']) ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </label>
-            <button class="create-btn" type="submit">表示</button>
-        </form>
-    <?php endif; ?>
+    <p>社員一覧で従業員を選択してから表示してください。</p>
+    <p><a class="create-btn" href="?controller=Employee&action=index&token=<?= urlencode(Auth::token()) ?>">社員一覧へ戻る</a></p>
 <?php elseif (empty($employeeSkills)): ?>
     <p>従業員スキルが見つかりません。</p>
 <?php else: ?>
@@ -47,6 +26,6 @@ foreach ($employees as $e) {
 <?php endif; ?>
 
 <p>
-    <a class="create-btn" href="?controller=Employee&action=skillsCreate&token=<?= urlencode(Auth::token()) ?>">従業員スキル登録へ</a>
+    <a class="create-btn" href="?controller=Employee&action=skillsCreate<?= $employeeIdParam ?>&token=<?= urlencode(Auth::token()) ?>">従業員スキル登録へ</a>
 </p>
 <?php require __DIR__ . '/../partials/foot.php'; ?>
