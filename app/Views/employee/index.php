@@ -1,6 +1,5 @@
 <?php
 $title = 'Employee List';
-$bodyClass = 'page-center';
 require __DIR__ . '/../partials/head.php';
 ?>
 
