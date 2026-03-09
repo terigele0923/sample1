@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>飛行機ゲームv.2</title>
+	<style>
+		body{
+		    margin:0;
+		    font-family:Arial, sans-serif;
+		    background:#f5f7fb;
+		    text-align:center;
+		}
+
+		h2{
+		    margin-top:30px;
+		}
+
+		#msg{
+		    margin-top:10px;
+		    font-size:18px;
+		    color:#333;
+		}
+
+		#board{
+		    width:max-content;
+		    margin:20px auto;
+		    display:grid;
+		    grid-template-columns:repeat(10, 40px);
+		    gap:4px;
+		}
+
+		.cell{
+		    width:40px;
+		    height:40px;
+		    background:#87ceeb;
+		    border:1px solid #333;
+		    cursor:pointer;
+		}
+
+		.cell.active{
+		    background:#ff6b6b;
+		}
+	</style>
+</head>
+<body>
+	<h2>飛行機ゲームv.2</h2>
+	<p id = "msg">セルをクリックしてください</p>
+	<div id="board"></div>
+	
+	<script>
+		const board = document.getElementById("board");
+		const msg = document.getElementById("msg");
+		
+		for(let x = 0;x<10;x++){
+			for(let y =0;y<10;y++){
+				const cell = document.createElement("div");
+				cell.className = "cell";
+				
+				cell.dataset.x = x;
+				cell.dataset.y = y;
+				
+				cell.onclick = function(){
+					const cellX = Number(this.dataset.x);
+					const cellY = Number(this.dataset.y);
+					
+					this.classList.add("active");
+					msg.innerText = "クリックしたセルの位置: " + cellX + " " + cellY;
+				}
+				
+				board.appendChild(cell);
+			}
+		}
+	</script>
+</body>
+</html>
