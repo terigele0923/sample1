@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>ECサイトサンプル | アイテム一覧</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+	<div class="container">
+		<header class="header">
+			<div class="brand">ECサイトサンプル</div>
+			<div class="search">
+				<span>🔍</span>
+				<input type="text" placeholder="アイテム名・素材で検索" />
+			</div>
+			<div class="header-actions">
+				<div class="badge">会員ランク: Gold</div>
+				<div class="badge">カート 2</div>
+			</div>
+		</header>
+
+		<section class="hero">
+			<div class="hero-box">
+				<h1>春限定コレクション</h1>
+				<p>柔らかな光沢のある素材と、肌に馴染む温かいトーンを集めた新作ライン。</p>
+			</div>
+			<div class="hero-image"></div>
+		</section>
+
+		<div class="content">
+			<aside class="sidebar">
+				<h3>FILTER</h3>
+				<div class="filter-group">
+					<label><input type="checkbox" checked /> 新着</label>
+					<label><input type="checkbox" /> 在庫あり</label>
+					<label><input type="checkbox" /> 予約可能</label>
+				</div>
+				<div class="filter-group">
+					<h3>PRICE</h3>
+					<label><input type="radio" name="price" checked /> 〜 5,000円</label>
+					<label><input type="radio" name="price" /> 5,000円〜10,000円</label>
+					<label><input type="radio" name="price" /> 10,000円〜</label>
+				</div>
+				<div class="filter-group">
+					<h3>COLOR</h3>
+					<label><input type="checkbox" /> ベージュ</label>
+					<label><input type="checkbox" /> ローズ</label>
+					<label><input type="checkbox" /> アンバー</label>
+				</div>
+			</aside>
+
+			<main>
+				<div class="grid-head">
+					<div>アイテム一覧</div>
+					<div class="count">24 items</div>
+				</div>
+				<section class="product-grid">
+					<article class="card">
+						<div class="card-media"></div>
+						<div class="card-body">
+							<p class="tag">NEW</p>
+							<h3 class="card-title">Silk Aura Blouse</h3>
+							<p class="card-desc">滑らかな光沢と軽さを両立したブラウス。</p>
+							<div class="card-meta">
+								<span class="price">¥8,800</span>
+								<span>★ 4.8</span>
+							</div>
+							<div class="card-actions">
+								<button class="btn">詳細</button>
+								<button class="btn primary">カートに追加</button>
+							</div>
+						</div>
+					</article>
+
+					<article class="card">
+						<div class="card-media"></div>
+						<div class="card-body">
+							<p class="tag">LIMITED</p>
+							<h3 class="card-title">Amber Flow Dress</h3>
+							<p class="card-desc">動くたびに陰影が生まれるフロー感。</p>
+							<div class="card-meta">
+								<span class="price">¥12,400</span>
+								<span>★ 4.6</span>
+							</div>
+							<div class="card-actions">
+								<button class="btn">詳細</button>
+								<button class="btn primary">カートに追加</button>
+							</div>
+						</div>
+					</article>
+
+					<article class="card">
+						<div class="card-media"></div>
+						<div class="card-body">
+							<p class="tag">BEST</p>
+							<h3 class="card-title">Rose Veil Knit</h3>
+							<p class="card-desc">肌触りの良い編み地と程よい厚み。</p>
+							<div class="card-meta">
+								<span class="price">¥6,900</span>
+								<span>★ 4.9</span>
+							</div>
+							<div class="card-actions">
+								<button class="btn">詳細</button>
+								<button class="btn primary">カートに追加</button>
+							</div>
+						</div>
+					</article>
+
+					<article class="card">
+						<div class="card-media"></div>
+						<div class="card-body">
+							<p class="tag">RESTOCK</p>
+							<h3 class="card-title">Soft Drape Pants</h3>
+							<p class="card-desc">ストレスフリーな履き心地。</p>
+							<div class="card-meta">
+								<span class="price">¥7,500</span>
+								<span>★ 4.7</span>
+							</div>
+							<div class="card-actions">
+								<button class="btn">詳細</button>
+								<button class="btn primary">カートに追加</button>
+							</div>
+						</div>
+					</article>
+
+					<article class="card">
+						<div class="card-media"></div>
+						<div class="card-body">
+							<p class="tag">NEW</p>
+							<h3 class="card-title">Linen Halo Shirt</h3>
+							<p class="card-desc">軽くて涼しいリネン素材。</p>
+							<div class="card-meta">
+								<span class="price">¥5,800</span>
+								<span>★ 4.4</span>
+							</div>
+							<div class="card-actions">
+								<button class="btn">詳細</button>
+								<button class="btn primary">カートに追加</button>
+							</div>
+						</div>
+					</article>
+
+					<article class="card">
+						<div class="card-media"></div>
+						<div class="card-body">
+							<p class="tag">BEST</p>
+							<h3 class="card-title">Glow Lace Skirt</h3>
+							<p class="card-desc">繊細なレースで軽やかな印象。</p>
+							<div class="card-meta">
+								<span class="price">¥9,600</span>
+								<span>★ 4.8</span>
+							</div>
+							<div class="card-actions">
+								<button class="btn">詳細</button>
+								<button class="btn primary">カートに追加</button>
+							</div>
+						</div>
+					</article>
+				</section>
+			</main>
+		</div>
+
+		<footer class="footer">
+			© 2026 LuxeGlow. All rights reserved.
+		</footer>
+	</div>
+</body>
+</html>
