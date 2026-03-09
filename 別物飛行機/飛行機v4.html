@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>炸飞机游戏 Ver.4</title>
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f5f7fb;
+    text-align:center;
+}
+
+h2{
+    margin-top:30px;
+}
+
+#msg{
+    margin-top:10px;
+    font-size:18px;
+    color:#333;
+}
+
+#board{
+    width:max-content;
+    margin:20px auto;
+    display:grid;
+    grid-template-columns:repeat(10, 40px);
+    gap:4px;
+}
+
+.cell{
+    width:40px;
+    height:40px;
+    background:#87ceeb;
+    border:1px solid #333;
+    cursor:pointer;
+}
+
+.hit{
+    background:#ff6b6b;
+}
+
+.miss{
+    background:#dcdcdc;
+}
+</style>
+</head>
+<body>
+
+<h2>炸飞机游戏 Ver.4</h2>
+<p id="msg">请点击格子，找出 3 个目标</p>
+<div id="board"></div>
+
+<script>
+const board = document.getElementById("board");
+const msg = document.getElementById("msg");
+
+// 这里先固定一个 3 格目标（竖着）
+const targets = [
+    {x:2, y:4},
+    {x:3, y:4},
+    {x:4, y:4}
+];
+
+let remaining = targets.length;
+
+for(let x = 0; x < 10; x++){
+    for(let y = 0; y < 10; y++){
+        const cell = document.createElement("div");
+        cell.className = "cell";
+        cell.dataset.x = x;
+        cell.dataset.y = y;
+
+        cell.onclick = function(){
+            const cellX = Number(this.dataset.x);
+            const cellY = Number(this.dataset.y);
+
+            if(this.classList.contains("hit") || this.classList.contains("miss")){
+                return;
+            }
+
+            let isHit = false;
+
+            for(let i = 0; i < targets.length; i++){
+                if(targets[i].x === cellX && targets[i].y === cellY){
+                    isHit = true;
+                    break;
+                }
+            }
+
+            if(isHit){
+                this.classList.add("hit");
+                remaining--;
+                msg.innerText = `命中！当前位置：(${cellX}, ${cellY})，剩余目标：${remaining}`;
+                if(remaining === 0){
+                    msg.innerText = "恭喜你，已经找出全部目标！";
+                }
+            }else{
+                this.classList.add("miss");
+                msg.innerText = `未命中：(${cellX}, ${cellY})，剩余目标：${remaining}`;
+            }
+        };
+
+        board.appendChild(cell);
+    }
+}
+</script>
+
+</body>
+</html>
