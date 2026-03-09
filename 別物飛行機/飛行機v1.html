@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>炸飞机游戏 Ver.1</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 30px;
+        }
+
+        #board {
+            width: max-content;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: repeat(10, 40px);
+            gap: 4px;
+        }
+
+        .cell {
+            width: 40px;
+            height: 40px;
+            background: #87ceeb;
+            border: 1px solid #333;
+            cursor: pointer;
+        }
+
+        .cell.active {
+            background: #ff6b6b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>炸飞机游戏 Ver.1</h2>
+    <p>点击格子，颜色会发生变化</p>
+
+    <div id="board"></div>
+
+    <script>
+        const board = document.getElementById("board");
+
+        for (let i = 0; i < 100; i++) {
+            const cell = document.createElement("div");
+            cell.className = "cell";
+
+            cell.onclick = function () {
+                cell.classList.add("active");
+            };
+
+            board.appendChild(cell);
+        }
+    </script>
+
+</body>
+
+</html>

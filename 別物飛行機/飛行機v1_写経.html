@@ -1,0 +1,35 @@
+<style>
+	body {
+		margin: 0;
+		background: #f5f7fb;
+		text-align: center;
+	}
+	
+	#board {
+		width: max-content;
+		display: grid;
+		grid-template-columns: repeat(10,40px);
+		margin: 20px auto;
+	}
+	
+	.cell {
+		width: 40px;
+		height: 40px;
+		background: blue;
+		border: 1px solid black;
+	}
+</style>
+<body>
+	<div id="board"></div>
+</body>
+<script>
+	const board = document.getElementById("board");
+	for(let i =0;i<100;i++){
+		const cell = document.createElement("div");
+		cell.className=("cell");
+		cell.onclick = function(){
+			cell.classList.add("active");
+		};
+		board.appendChild(cell);
+	}
+</script>
